@@ -25,12 +25,14 @@
 [Sidekiq Scheduler](https://github.com/Moove-it/sidekiq-scheduler)
 
 # sidekiq notes
+`Sidekiq` 預設用 `redis` 存取 job queue，跑 Sidekiq 前需要先安裝好 redis ，並開啓 redis server
+
 ## install redis
 ```
 $ brew install redis
 ```
 
-## run redis
+## run redis server
 ```
 $ redis-server /usr/local/etc/redis.conf
 ```
@@ -62,7 +64,9 @@ $ bundle exec sidekiq -r ./lib/run_sidekiq.rb -C ./config/sidekiq.yml
 
 ## Sidekiq web display
 使用 `webrick` 顯示 Sidekiq 狀態
-### 在 `rakefile` 中加入 `moniter` 任務
+### add rakefile
+在 `rakefile` 中加入 `moniter` 任務
+
 ``` ruby
 task :monitor do
   # optional: Process.daemon (and take care of Process.pid to kill process later on)
