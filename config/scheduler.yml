@@ -1,0 +1,6 @@
+md5_test_file:
+  #cron: "*/10 * * * *" # run at 00:00, 00:10, 00:20, ... ..., 23:50
+  every: "5s" # run job periodly
+  class: MyWorker::CreateJobWorker
+  queue: create_job_worker
+  description: "This job flow will run periodly triggering to md5 a test file"

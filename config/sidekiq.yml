@@ -1,0 +1,13 @@
+---
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:concurrency: 50
+#:pidfile: tmp/pids/sidekiq.pid
+staging:
+  :concurrency: 25
+production:
+  :concurrency: 25
+:queues:
+  - [create_job_worker, 2]
+  - [md5_worker, 1]
+  - [finish_job_worker, 3]
